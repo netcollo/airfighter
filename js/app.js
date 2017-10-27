@@ -85,6 +85,20 @@ var GAME = {
             self.createEnemy('big');
         }, 1500);
         
+        // create plane
+        this.plane = new Plane({
+            x: this.planePosX,
+            y: this.planePosY,
+            width: opts.planeSize.width,
+            height: opts.planeSize.height,
+            bulletSize: opts.bulletSize,
+            bulletSpeed: opts.bulletSpeed,
+            icon: resourceHelper.getImage('bluePlaneIcon'),
+            bulletIcon: resourceHelper.getImage('fireIcon'),
+            boomIcon: resourceHelper.getImage('enemyBigBoomIcon'),
+        });
+        this.plane.startShoot();
+
         this.update();
     },
 
@@ -169,6 +183,7 @@ var GAME = {
         this.enemies.forEach(function(enemy){
             enemy.draw();
         });
+        this.plane.draw();
     }
 };
 
